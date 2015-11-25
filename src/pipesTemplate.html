@@ -1,0 +1,23 @@
+<!-- pipesTemplate.html -->
+<h3>Dates</h3>
+<!-- Sep 1, 2015 -->
+<p>{{ date | date:'mediumDate' }}</p>
+<!-- September 1, 2015 -->
+<p>{{ date | date:'yMMMMd' }}</p>
+<!-- 3.50 pm -->
+<p>{{ date | date:'shortTime' }}</p>
+
+<h3>Percentages / Decimals</h3>
+<!-- 99.00% -->
+<p>{{ grade | percent:'.2' }}</p>
+<!-- 09.12 -->
+<p>{{ rate | number:'2.1-2' }}</p>
+
+<h3>Async</h3>
+<p>promise: {{ promise | async }}</p>
+
+<h3>Custom Pipes - Convert Temperature</h3>
+<!-- 85 °F -->
+<p>Fahrenheit: {{ temperature + ' °F' }}</p>
+<!-- 29.4 °C -->
+<p>Celsius: {{ temperature | tempConvert:'celsius':1 }}</p>
