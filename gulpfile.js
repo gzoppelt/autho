@@ -1,14 +1,14 @@
 var gulp = require('gulp'),
-    sass = require('gulp-ruby-sass'),
-    autoprefixer = require('gulp-autoprefixer'),
-    minifycss = require('gulp-minify-css'),
+    //sass = require('gulp-ruby-sass'),
+    //autoprefixer = require('gulp-autoprefixer'),
+    //minifycss = require('gulp-minify-css'),
     jshint = require('gulp-jshint'),
-    uglify = require('gulp-uglify'),
-    imagemin = require('gulp-imagemin'),
-    rename = require('gulp-rename'),
+    //uglify = require('gulp-uglify'),
+    //imagemin = require('gulp-imagemin'),
+    //rename = require('gulp-rename'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
-    cache = require('gulp-cache'),
+    //cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
     del = require('del');
 
@@ -17,12 +17,12 @@ var PATHS = {
 };
 
 gulp.task('clean', function (done) {
-    var del = require('del');
-    del(['dist'], done);
+    del(['dist'], done)
+        .pipe(notify({message: 'gulp task clean completed'}));
 });
-
+/*
 gulp.task('styles', function () {
-    return sass('**/*.scss', {style: 'expanded'})
+    return sass('** /*.scss', {style: 'expanded'})
         .pipe(autoprefixer('last 2 version'))
         .pipe(gulp.dest('dist/assets/css'))
         .pipe(rename({suffix: '.min'}))
@@ -31,16 +31,24 @@ gulp.task('styles', function () {
         .pipe(notify({message: 'Task styles completed.'}))
     ;
 });
-
+*/
 gulp.task('ts2js', function () {
     var typescript = require('gulp-typescript');
     var tscConfig = require('./tsconfig.json');
 
     var tsResult = gulp
         .src(PATHS.src)
-        .pipe(typescript(tscConfig.compilerOptions));
+        .pipe(typescript(tscConfig.compilerOptions))
+    ;
 
     return tsResult.js.pipe(gulp.dest('dist'));
+});
+
+gulp.task('copy', function () {
+    gulp.src('src/*.html')
+    //do all the stuff here: minification, ...
+        .pipe(gulp.dest('dist'))
+    ;
 });
 
 gulp.task('play', ['ts2js'], function () {

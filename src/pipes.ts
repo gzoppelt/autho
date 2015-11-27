@@ -1,3 +1,5 @@
+/// <
+
 import {Component, View, bootstrap, Pipe, PipeTransform, bind} from 'angular2/angular2';
 
 // We use the @Pipe decorator to register the name of the pipe
@@ -19,7 +21,7 @@ class TempConvertPipe implements PipeTransform {
   selector: 'pipes'
 })
 @View({
-  templateUrl: 'pipesTemplate.html',
+  templateUrl: 'src/pipesTemplate.html',
   // We can pass the pipe class name into the pipes key to make it usable in our views
   pipes: [TempConvertPipe]
 })
